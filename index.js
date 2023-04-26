@@ -12,7 +12,7 @@ const handleTweet = () => {
 
     const tweetClient = twitterClient.readWrite;
 
-    tweetClient.v2.tweet('Milliseconds since 01/01/1970: ' + Date.now());
+    tweetClient.v2.tweet('Bot test');
 };
 
 handleTweet();
