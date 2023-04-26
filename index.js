@@ -18,9 +18,9 @@ const handleTweet = () => {
   });
   const tweetClient = twitterClient.readWrite;
 
-  // const image = generateNewImage();
+  const image = generateNewImage();
 
-  tweetClient.v2.tweet('Hello good world - bot');
+  tweetClient.v2.tweet(image.prompt);
 };
 
 handleTweet();
