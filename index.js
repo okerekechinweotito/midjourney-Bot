@@ -1,35 +1,9 @@
 import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
-import client from 'https';
-import fs from 'fs';
-import { useFirebase } from './services/useFirebase.js';
-import { shortenString } from './utils/twitterCharacterLimit.js';
+import { useFirebase } from './api/useFirebase.js';
+import { shortenString } from './utils/charLimit.js';
+import { downloadImage } from './utils/downloadImage.js';
 dotenv.config();
-
-const generateNewImage = async () => {
-  const uniqueRandom = Date.now() + Math.random();
-  const randomIndex = Math.floor(uniqueRandom * 5425) % 5425;
-  const randomData = await useFirebase(randomIndex.toString());
-  return randomData;
-};
-
-const downloadImage = (url, filepath) => {
-  return new Promise((resolve, reject) => {
-    client.get(url, (res) => {
-      if (res.statusCode === 200) {
-        res
-          .pipe(fs.createWriteStream(filepath))
-          .on('error', reject)
-          .once('close', () => resolve(filepath));
-      } else {
-        res.resume();
-        reject(
-          new Error(`Request Failed With a Status Code: ${res.statusCode}`)
-        );
-      }
-    });
-  });
-};
 
 const handleTweet = async () => {
   const twitterClient = new TwitterApi({
@@ -40,9 +14,9 @@ const handleTweet = async () => {
   });
   const tweetClient = twitterClient.readWrite;
 
-  const image = await generateNewImage();
-  const prompt = await shortenString(image.prompt, 280);
+  const image = await useFirebase();
   await downloadImage(image.smallImage, './image.png');
+  const prompt = await shortenString(image.prompt, 280);
   const upload = await tweetClient.v1.uploadMedia('./image.png');
 
   const resp = await tweetClient.v2.tweet(prompt, {

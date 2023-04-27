@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyD-fydzUEb67wFosx_tF9TTyVTSbSeiYtM',
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: 'midjourney--bot.firebaseapp.com',
   databaseURL: 'https://midjourney--bot-default-rtdb.firebaseio.com',
   projectId: 'midjourney--bot',
@@ -13,4 +13,3 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
- 
