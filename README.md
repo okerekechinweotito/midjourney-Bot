@@ -1,1 +1,3 @@
-Twitter Bot
+## This is a Twitter Bot that posts daily Midjourney generated images on Twitter. 
+
+## Twitter handle will be provided soon ...
