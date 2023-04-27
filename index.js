@@ -57,6 +57,7 @@ const handleTweet = async () => {
       `Successfully tweeted: ${image.smallImage} with description: ${prompt}`
     );
   }
+  process.exit();
 };
 
 handleTweet()
@@ -77,26 +78,3 @@ handleTweet()
 
 
 
-
-
-/* 
-const handleTweet = async () => {
-  const twitterClient = new TwitterApi({
-    appKey: process.env.CONSUMER_KEY ?? '',
-    appSecret: process.env.CONSUMER_SECRET ?? '',
-    accessToken: process.env.ACCESS_TOKEN ?? '',
-    accessSecret: process.env.ACCESS_TOKEN_SECRET ?? '',
-  });
-  const tweetClient = twitterClient.readWrite;
-
-  const image = await generateNewImage();
-  if (image.prompt) {
-    // tweetClient.v2.tweet(image.prompt);
-    console.log(`Tweeted `);
-  } else {
-    throw new Error('Skipping tweet because prompt is undefined.');
-  }
-};
-
-handleTweet();
- */
