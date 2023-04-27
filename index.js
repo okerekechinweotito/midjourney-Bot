@@ -7,7 +7,8 @@ import { shortenString } from './utils/twitterCharacterLimit.js';
 dotenv.config();
 
 const generateNewImage = async () => {
-  const randomIndex = Math.floor(Math.random() * 5425);
+  const uniqueRandom = Date.now() + Math.random();
+  const randomIndex = Math.floor(uniqueRandom * 5425) % 5425;
   const randomData = await useFirebase(randomIndex.toString());
   return randomData;
 };
@@ -44,7 +45,6 @@ const handleTweet = async () => {
   await downloadImage(image.smallImage, './image.png');
   const upload = await tweetClient.v1.uploadMedia('./image.png');
 
-  // send tweet with image
   const resp = await tweetClient.v2.tweet(prompt, {
     media: {
       media_ids: [upload],
