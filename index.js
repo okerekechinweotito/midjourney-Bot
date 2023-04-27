@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import client from 'https';
 import fs from 'fs';
 import { useFirebase } from './services/useFirebase.js';
+import { shortenString } from './utils/twitterCharacterLimit.js';
 dotenv.config();
 
 const generateNewImage = async () => {
@@ -10,7 +11,6 @@ const generateNewImage = async () => {
   const randomData = await useFirebase(randomIndex.toString());
   return randomData;
 };
-
 
 const downloadImage = (url, filepath) => {
   return new Promise((resolve, reject) => {
@@ -39,13 +39,13 @@ const handleTweet = async () => {
   });
   const tweetClient = twitterClient.readWrite;
 
-
   const image = await generateNewImage();
+  const prompt = await shortenString(image.prompt, 280);
   await downloadImage(image.smallImage, './image.png');
   const upload = await tweetClient.v1.uploadMedia('./image.png');
 
   // send tweet with image
-  const resp = await tweetClient.v2.tweet(image.prompt, {
+  const resp = await tweetClient.v2.tweet(prompt, {
     media: {
       media_ids: [upload],
     },
@@ -53,9 +53,11 @@ const handleTweet = async () => {
   if (resp.errors) {
     console.log('errors:', resp.errors);
   } else {
-    console.log(`Successfully tweeted: ${image.smallImage} with description: ${image.prompt}`);
+    console.log(
+      `Successfully tweeted: ${image.smallImage} with description: ${prompt}`
+    );
   }
-}
+};
 
 handleTweet()
 
