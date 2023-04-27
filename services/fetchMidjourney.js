@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/* import fetch from 'node-fetch';
 
 const useMidjourney = async () => {
   const url = 'https://ai_image-database.p.rapidapi.com/images/midjourney';
@@ -22,3 +22,4 @@ const useMidjourney = async () => {
 };
 
 export { useMidjourney };
+ */
