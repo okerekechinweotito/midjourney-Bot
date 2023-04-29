@@ -1,12 +1,12 @@
 {
-  "name": "twitter-bot-template",
+  "name": "midjourney-bot",
   "version": "1.0.0",
-  "description": "Template to help create a Twitter bot",
+  "description": "A Twitter Bot that tweets daily Midjourney generated Images with their prompts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Matt Hughes",
+  "author": "Okereke Chinweotito",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",

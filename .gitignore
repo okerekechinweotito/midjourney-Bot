@@ -1,3 +1,4 @@
 node_modules/
 .env
 /utils/archive.js
+/utils/dataset.json
