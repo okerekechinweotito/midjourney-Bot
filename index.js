@@ -16,9 +16,9 @@ const handleTweet = async () => {
 
   const image = await useFirebase();
   await downloadImage(image.smallImage, './image.png');
-  const prompt = await shortenString(image.prompt, 235);
+  const prompt = await shortenString(image.prompt, 170);
   const upload = await tweetClient.v1.uploadMedia('./image.png');
-  const tweetText = `${prompt} #midjourney #midjourneyv5 #midjourneyart`;
+  const tweetText = `${prompt} #midjourney #midjourneyv5 #midjourneyart #MidJourneyArtwork #AI #AIArt #AIArtCommunity #AIGenerated`;
 
   const resp = await tweetClient.v2.tweet(tweetText, {
     media: {
