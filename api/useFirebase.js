@@ -12,8 +12,8 @@ const fetchImage = async (dataKey) => {
 const useFirebase = async () => {
   const uniqueRandom = Date.now() + Math.random();
   const randomIndex = Math.floor(uniqueRandom * 5425) % 5425;
-  // const randomData = await fetchImage(randomIndex.toString());
-  const randomData = await fetchImage('0');
+  const randomData = await fetchImage(randomIndex.toString());
+  console.log(`database ref no - ${randomIndex}`);
   return randomData;
 };
 
