@@ -5,7 +5,7 @@ const fetchImage = async (dataKey) => {
   const databaseRef = ref(database);
   const snapshot = await get(child(databaseRef, dataKey));
   const data = snapshot.val();
-  await remove(child(databaseRef, dataKey));
+  // await remove(child(databaseRef, dataKey));
   return data;
 };
 
