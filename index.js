@@ -18,7 +18,7 @@ const handleTweet = async () => {
   await downloadImage(image.smallImage, './image.png');
   const prompt = await shortenString(image.prompt, 165);
   const upload = await tweetClient.v1.uploadMedia('./image.png');
-  const tweetText = `${prompt} #midjourney #midjourneyv5 #midjourneyart #stablediffusion ai #aiart #aiartcommunity #aigenerated #bot`;
+  const tweetText = `${prompt} #midjourney #midjourneyv5 #midjourneyart #stablediffusion #ai #aiart #aiartcommunity #aigenerated #bot`;
 
   const resp = await tweetClient.v2.tweet(tweetText, {
     media: {
