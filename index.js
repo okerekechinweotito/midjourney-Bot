@@ -29,7 +29,7 @@ const handleTweet = async () => {
     console.log('errors:', resp.errors);
   } else {
     console.log(
-      `Successfully tweeted: ${image.smallImage} with description: ${prompt}`
+      `Successfully tweeted: ${image.smallImage} with descriptions: ${prompt}`
     );
   }
   process.exit();
