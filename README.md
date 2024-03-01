@@ -4,4 +4,4 @@ My goal is to utilize Twitter's API for a captivating Bot. By tweeting daily, AI
 
 ## Contribution
 
-Contributions are welcomed - Create an issue and make a corresponding PR
+Contributions are welcomed - Create an issue and fire a PR
